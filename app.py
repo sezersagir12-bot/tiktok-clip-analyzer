@@ -9,7 +9,7 @@ load_dotenv()
 # --- Config ---
 st.set_page_config(page_title="TikTok Clip Analyzer", page_icon="🎬", layout="centered")
 
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
 if not GROQ_API_KEY:
     st.error("❌ GROQ_API_KEY nicht gefunden. Erstelle eine `.env` Datei mit: GROQ_API_KEY=dein_key")
     st.stop()
