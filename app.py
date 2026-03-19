@@ -9,7 +9,7 @@ load_dotenv()
 # --- Config ---
 st.set_page_config(page_title="TikTok Clip Analyzer", page_icon="🎬", layout="centered")
 
-GROQ_API_KEY = os.getenv("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
 if not GROQ_API_KEY:
     st.error("❌ GROQ_API_KEY nicht gefunden. Erstelle eine `.env` Datei mit: GROQ_API_KEY=dein_key")
     st.stop()
@@ -191,13 +191,13 @@ if st.button("🔍 Analysieren", type="primary", use_container_width=True):
 
                     status.update(label="Fertig!", state="complete")
 
-            st.markdown("---")
-            st.markdown("### 📋 Ergebnisse")
-            st.markdown(result)
+                    st.markdown("---")
+                    st.markdown("### 📋 Ergebnisse")
+                    st.markdown(result)
 
-            st.download_button(
-                "📄 Als Text herunterladen",
-                data=result,
-                file_name=f"clips_{video_id}.txt",
-                mime="text/plain",
-            )
+                    st.download_button(
+                        "📄 Als Text herunterladen",
+                        data=result,
+                        file_name=f"clips_{video_id}.txt",
+                        mime="text/plain",
+                    )
